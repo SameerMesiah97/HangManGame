@@ -1,13 +1,14 @@
-import HangMan
+import hangman
 
-new_game = HangMan.Game()
+new_game = hangman.Game()
 word = new_game.select_word()
 letters = new_game.convert_word(word)
-game_display = HangMan.Display()
+game_display = hangman.Display()
 
 while new_game.game_end == False:
-    game_display.show_letters(letters)
+
     game_display.show_hangman(new_game.lives)
+    game_display.show_letters(letters)
     guess = input("Enter a letter:")
 
     correct_guess = False
