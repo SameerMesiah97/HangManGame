@@ -1,12 +1,13 @@
 import HangMan
 
-new_game = HangMan.Game(5)
+new_game = HangMan.Game()
 word = new_game.select_word()
 letters = new_game.convert_word(word)
 game_display = HangMan.Display()
 
 while new_game.game_end == False:
     game_display.show_letters(letters)
+    game_display.show_hangman(new_game.lives)
     guess = input("Enter a letter:")
 
     correct_guess = False
@@ -24,6 +25,7 @@ while new_game.game_end == False:
         game_display.show_lives(new_game.lives)
 
     if new_game.lives == 0:
+        game_display.show_hangman(0)
         new_game.game_end = True
         new_game.game_won = False
 
@@ -38,7 +40,6 @@ while new_game.game_end == False:
     if count == len (letters):
         new_game.game_end = True
         new_game.game_won = True
-
 
 if new_game.game_won:
     print("You have won.")
